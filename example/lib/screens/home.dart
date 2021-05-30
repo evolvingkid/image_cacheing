@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
             Container(
                 child: ImageCacheing(
                     url: global.imageErrorUrl,
-                    loadingWidget: Center(child: Icon(Icons.warning)))),
+                    errorWidget: Center(child: Icon(Icons.warning)))),
           ],
         ),
       ),

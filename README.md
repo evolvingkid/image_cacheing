@@ -1,14 +1,24 @@
 # image_cacheing
 
-A new Flutter package project.
 
-## Getting Started
+image_cacheing is an image caching package. It is currently tested for Android applications.
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+ImageCacheing widget takes url as a param. url params take in String url for the image url.
+```dart
+ImageCacheing(url: "Image URL"),
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+ImageCacheing widget also takes param named loadingWidget. This take widget it will show when the image is loading to be cache to your system.
+```dart
+ImageCacheing(
+    url: global.imageLoadingUrl,
+    loadingWidget: Center(child: CircularProgressIndicator())),
+```
+
+ImageCacheing widget also takes param named errorWidget. This take widget it will show when an error occurred in the widget. For example, giving in a valid URL.
+
+```dart
+ImageCacheing(
+    url: global.imageErrorUrl,
+    errorWidget: Center(child: Icon(Icons.warning)))
+```
