@@ -2,7 +2,6 @@ name: image_cacheing
 description: image cacheing widget which cache images to fast load
 version: 0.0.1
 homepage: https://github.com/evolvingkid/image_cacheing
-author: Mohammad Fayez
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -15,6 +14,7 @@ dependencies:
   convert: ^3.0.0
   crypto: ^3.0.1
   path_provider: ^2.0.2
+  path: ^1.8.0
 
 dev_dependencies:
   flutter_test:
