@@ -1,7 +1,7 @@
 name: image_cacheing
 description: image cacheing widget which cache images to fast load
 version: 0.0.1
-homepage:
+homepage: https://github.com/evolvingkid/image_cacheing
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
