@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 // * custom function file have the all exported file for functions used in this package.
 import '../functions/custom_functions.dart';
@@ -38,6 +39,7 @@ class _ImageCacheingState extends State<ImageCacheing> {
   bool _errorOccured = false;
 
   void _getImage() async {
+    if (kIsWeb) return null;
     try {
       // * try to acess Image
       _errorOccured = false;
@@ -83,6 +85,10 @@ class _ImageCacheingState extends State<ImageCacheing> {
   }
 
   Widget imageHandler({required File image}) {
+    if (kIsWeb) {
+      return networkImage();
+    }
+
     // ? this is work when user is  initlize error Widgets
     if (widget.errorWidget != null) {
       return _errorOccured ? widget.errorWidget! : const SizedBox();
@@ -105,5 +111,19 @@ class _ImageCacheingState extends State<ImageCacheing> {
             filterQuality: widget.filterQuality,
             fit: widget.fit,
           );
+  }
+
+  Image networkImage() {
+    return Image.network(
+      widget.url,
+      scale: widget.scale,
+      alignment: widget.alignment,
+      width: widget.width,
+      height: widget.height,
+      filterQuality: widget.filterQuality,
+      fit: widget.fit,
+      errorBuilder: (ctx, obj, _) =>
+          widget.errorWidget == null ? const SizedBox() : widget.errorWidget!,
+    );
   }
 }
