@@ -85,6 +85,7 @@ class _ImageCacheingState extends State<ImageCacheing> {
   }
 
   Widget imageHandler({required File image}) {
+    // ? give error handle for the web platform
     if (kIsWeb) {
       return networkImage();
     }
@@ -96,24 +97,28 @@ class _ImageCacheingState extends State<ImageCacheing> {
 
     // ? this will work when user is initlize loading widgets
     if (widget.loadingWidget != null) {
-      return _isLoading ? widget.loadingWidget! : Image.file(image);
+      return _isLoading ? widget.loadingWidget! : fileImage(image);
     }
 
     // ? this will work  when image is cached and needed showen
-    return _isLoading
-        ? const SizedBox()
-        : Image.file(
-            image,
-            scale: widget.scale,
-            alignment: widget.alignment,
-            width: widget.width,
-            height: widget.height,
-            filterQuality: widget.filterQuality,
-            fit: widget.fit,
-          );
+    return _isLoading ? const SizedBox() : fileImage(image);
+  }
+
+  Image fileImage(File image) {
+    // file image shows for the non - web platform
+    return Image.file(
+      image,
+      scale: widget.scale,
+      alignment: widget.alignment,
+      width: widget.width,
+      height: widget.height,
+      filterQuality: widget.filterQuality,
+      fit: widget.fit,
+    );
   }
 
   Image networkImage() {
+    // network image will show for web platform
     return Image.network(
       widget.url,
       scale: widget.scale,
