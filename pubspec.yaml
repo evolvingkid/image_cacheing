@@ -1,6 +1,6 @@
 name: image_cacheing
-description: image cacheing widget which cache images to fast load
-version: 0.0.1
+description: image_cacheing will cache image that given to url params. Thus increasing the speed of image loading at next time you load the image. This is support on android devices as of now.
+version: 0.0.2
 homepage: https://github.com/evolvingkid/image_cacheing
 
 environment:
